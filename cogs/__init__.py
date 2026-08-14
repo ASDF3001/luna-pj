@@ -3,4 +3,5 @@ EXTENSIONS = [
     "cogs.auth",
     "cogs.ticket",
     "cogs.general",
+    "cogs.update",
 ]

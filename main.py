@@ -24,7 +24,7 @@ intents.messages = True
 intents.reactions = True
 intents.dm_messages = True
 
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 
 @bot.event
