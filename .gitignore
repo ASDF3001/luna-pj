@@ -1,0 +1,33 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# AI Agent logs / configs
+.roo/
+.aider/
+.qwen/
+.cursor/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Added by Safe Git Push
+.pem
+.key
+*.p12
+id_rsa
+.gitpush.toml
+gitpush.log
