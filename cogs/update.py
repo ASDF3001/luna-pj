@@ -8,7 +8,7 @@ from discord.ext import commands
 
 from utils import respond, make_embed
 
-UPDATE_DIR = Path("bot/update")
+UPDATE_DIR = Path(__file__).resolve().parent.parent / "update"
 
 def get_versions() -> list[str]:
     """updateディレクトリ内のファイルからバージョン一覧を取得して昇順にソートして返す"""

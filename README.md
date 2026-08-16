@@ -9,8 +9,12 @@ discord.pyだけでいいのでMWS側でなんか入れないといけないっ�
 - **Anti-Raid**: 短時間の大量参加を検知して処罰 (Kick / Ban / Timeout)
 - **Anti-Spam**: メッセージ連投の検知・処罰
 - **Anti-URL**: 過剰なURL投稿の検知
+- **Anti-Nuke**: 短時間の大量チャンネル削除・Kick・Banを検知し、実行者を処罰
 - **認証システム**: ボタンまたはリアクション式 + DM認証コード
 - **チケット機能**: 個別サポート用のプライベートチャンネル作成
+- **ロールパネル**: ボタン/セレクトメニューでロールを付け外し
+- **メッセージ管理**: メッセージ一括削除 (Bot/Webhookのみのフィルタ対応)
+- **チャンネル管理**: 確認付きのチャンネル削除
 - **その他**: 埋め込み送信、ホワイト/ブラックリスト管理、ログ・トラップチャンネル通知
 - 設定はすべてスラッシュコマンド対応
 
@@ -43,6 +47,10 @@ bot/
     ├── anti.py      # Anti-Raid / Spam / URL + Whitelist / Blacklist
     ├── auth.py      # 認証システム
     ├── ticket.py    # チケットシステム
-    └── general.py   # embed / hex / top / trap
+    ├── general.py   # embed / hex / top / trap
+    ├── update.py    # version / update
+    ├── mod.py       # purge / channel_delete
+    ├── nuke.py      # Anti-Nuke
+    └── rolepanel.py # ロールパネル
 todo/                # TODO管理
 ```

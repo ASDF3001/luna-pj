@@ -38,10 +38,50 @@ async def respond(interaction: discord.Interaction, *, embed=None, content=None,
         await interaction.response.send_message(**kwargs)
 
 
+def can_act_on(member: discord.Member) -> bool:
+    me = member.guild.me
+    if member.id == me.id:
+        return False
+    if member.id == member.guild.owner_id:
+        return False
+    if member.top_role >= me.top_role:
+        return False
+    return True
+
+
+def role_is_dangerous(role: discord.Role) -> bool:
+    p = role.permissions
+    return bool(
+        p.administrator or p.manage_guild or p.manage_roles
+        or p.manage_channels or p.ban_members or p.kick_members
+        or p.mention_everyone
+    )
+
+
+async def find_audit_user(guild: discord.Guild, action: discord.AuditLogAction,
+                          target_id: int | None = None,
+                          window: float = 10.0) -> discord.abc.User | None:
+    try:
+        async for entry in guild.audit_logs(limit=8, action=action):
+            if target_id is not None:
+                target = entry.target
+                if not target or getattr(target, "id", None) != target_id:
+                    continue
+            age = (discord.utils.utcnow() - entry.created_at).total_seconds()
+            if age <= window:
+                return entry.user
+    except discord.Forbidden:
+        return None
+    return None
+
+
 async def punishment(member: discord.Member, action: str, reason: str) -> str:
     action = (action or "delete").lower()
 
-    if member.id == member.guild.me.id:
+    if action == "none":
+        return "none"
+
+    if not can_act_on(member):
         return "skipped"
 
     perms = member.guild.me.guild_permissions

@@ -4,4 +4,7 @@ EXTENSIONS = [
     "cogs.ticket",
     "cogs.general",
     "cogs.update",
+    "cogs.mod",
+    "cogs.nuke",
+    "cogs.rolepanel",
 ]
