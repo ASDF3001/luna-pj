@@ -54,3 +54,9 @@ bot/
     └── rolepanel.py # ロールパネル
 todo/                # TODO管理
 ```
+
+## License
+
+Copyright (c) 2026 asdfyuto. All rights reserved.
+
+This project is not open source. You may not copy, distribute, or modify this code without explicit permission.
